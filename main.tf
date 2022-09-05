@@ -19,6 +19,17 @@ resource "aws_subnet" "dev_public_sn" {
   }
 }
 
+resource "aws_subnet" "dev_public_sn1" {
+  vpc_id                  = aws_vpc.dev_vpc.id
+  cidr_block              = "10.16.48.0/20"
+  map_public_ip_on_launch = true
+  availability_zone       = "us-west-2b"
+
+  tags = {
+    Name = "pub-sn1"
+  }
+}
+
 resource "aws_internet_gateway" "dev_igw" {
   vpc_id = aws_vpc.dev_vpc.id
 
@@ -69,7 +80,7 @@ resource "aws_security_group" "dev_sg" {
 }
 
 resource "aws_key_pair" "sweden_key" {
-  key_name   = "devenv"
+  key_name = "devenv"
   # key_name = "devenv01"
   # public_key = file("~/.ssh/devenv.pub")
   public_key = file("devenv.pub")
@@ -94,15 +105,16 @@ resource "aws_instance" "dev_ec2" {
     Name = "Ubuntu-server"
   }
 
-  # provisioner "local-exec" {
-  #   command = templatefile("${var.host_os}-ssh-config.tpl", {
-  #     hostname     = self.public_ip,
-  #     user         = "ubuntu",
-  #     # identityfile = "/Users/Mohamed.Roble/Documents/Dev/DevEnv/devenv01.pem"
-  #     identityfile = "~/.ssh/devenv"
-  #   })
-  #   interpreter = var.host_os == "linux" ? ["bash", "-c"] : ["Powershell", "-Command"]
-  #   # interpreter = ["bash", "-c"]
-  #   # interpreter = ["Powershell", "-Command"] # for windows workstation
-  # }
+  provisioner "local-exec" {
+    command = templatefile("${var.host_os}-ssh-config.tpl", {
+      hostname = self.public_ip,
+      user     = "ubuntu",
+      # identityfile = "/Users/Mohamed.Roble/Documents/Dev/DevEnv/devenv01.pem"
+      identityfile = "~/.ssh/devenv"
+    })
+    interpreter = var.host_os == "linux" ? ["bash", "-c"] : ["Powershell", "-Command"]
+    # interpreter = ["bash", "-c"]
+    # interpreter = ["perl", "-e"]
+    # interpreter = ["Powershell", "-Command"] # for windows workstation
+  }
 }
