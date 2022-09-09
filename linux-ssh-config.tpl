@@ -6,3 +6,5 @@ Host ${hostname}
   User ${user}
 
 EOF
+
+## copy these line of texts at top lines of config file 
