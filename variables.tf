@@ -12,3 +12,11 @@ variable "aws_region" {
 variable "access_ip" {
   type = string
 }
+
+variable "app_account" {
+  type    = number
+  default = 3
+}
+# variable "main_sgs" {}
+
+# variable "pub_sn" {}
