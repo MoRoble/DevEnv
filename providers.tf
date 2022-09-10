@@ -8,7 +8,7 @@ terraform {
 
 provider "aws" {
   #   shared_config_files      = ["/Users/tf_user/.aws/conf"]
-  region                   = "us-west-2"
+  region                   = var.aws_region
   shared_credentials_files = ["~/.aws/credentials"]
   profile                  = "devenv01"
 }
