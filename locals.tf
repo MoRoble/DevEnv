@@ -3,15 +3,17 @@ locals {
 }
 
 locals {
-  main_sg = {
+  security_groups = {
     dev_sg = {
       name        = "dev-main-sg"
       description = "Dev main public open Security group"
       ingress = {
-        from        = 0
-        to          = 0
-        protocol    = "-1"
-        cidr_blocks = [var.access_ip]
+        all = {
+          from        = 0
+          to          = 0
+          protocol    = "-1"
+          cidr_blocks = [var.access_ip]
+        }
       }
     }
     wordpress = {

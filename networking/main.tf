@@ -69,7 +69,7 @@ resource "aws_default_route_table" "private_rt" {
 }
 
 resource "aws_security_group" "objs" {
-  for_each    = var.main_sg
+  for_each    = var.security_groups
   name        = each.value.name
   description = each.value.description
   vpc_id      = aws_vpc.dev_vpc.id
@@ -205,14 +205,14 @@ resource "aws_subnet" "dev_db_sn" {
   }
 }
 
-resource "aws_db_subnet_group" "rds_sng" {
-  count      = var.db_subnet_group == true ? 1 : 0
-  name       = "rds_subnetgroup"
-  subnet_ids = aws_subnet.dev_db_sn.*.id
-  tags = {
-    name = "db-sng"
-  }
-}
+# resource "aws_db_subnet_group" "rds_sng" {
+#   count      = var.db_subnet_group == true ? 1 : 0
+#   name       = "rds_subnetgroup"
+#   subnet_ids = aws_subnet.dev_db_sn.*.id
+#   tags = {
+#     name = "db-sng"
+#   }
+# }
 
 ## Policy document
 data "aws_iam_policy_document" "dev_policy_doc" {

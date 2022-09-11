@@ -20,7 +20,7 @@ resource "aws_instance" "objs" {
   instance_type          = var.instance_type #refer to root/main.tf
   ami                    = data.aws_ami.ubuntu_server.id
   key_name               = aws_key_pair.sweden_key.id
-  vpc_security_group_ids = [var.security_group]
+  vpc_security_group_ids = var.security_group
   subnet_id              = var.pub_sn[count.index]
   # iam_instance_profile   = aws_iam_instance_profile.dev_ec2_profile.name
   user_data = file("./compute/userdata.tpl")
