@@ -6,7 +6,7 @@ variable "host_os" {
 }
 
 variable "aws_region" {
-  default = "us-west-2"
+  default = "us-west-1"
 }
 
 variable "access_ip" {
@@ -17,6 +17,7 @@ variable "app_account" {
   type    = number
   default = 3
 }
-# variable "main_sgs" {}
+ variable "bucketnames" {}
+ 
 
-# variable "pub_sn" {}
+

@@ -26,7 +26,7 @@ module "compute" {
   instance_count  = 1
   instance_type   = "t3.micro"
   vol_size        = "20"
-  public_key_path = "/Users/Mohamed.Roble/Documents/Dev/DevEnv/devenv.pub"
+  public_key_path = "/Users/hamdi.hassan/terraform-practice/DevEnv/devenv.pub"
   key_name        = "devenv"
   # instance_profile = "dev_profile"
 

@@ -1,19 +1,23 @@
 terraform {
+  required_version = "~>1.1.0"
+
+  backend "s3" {
+    bucket         = "devenv-general"
+    key            = "devenv/core.tfstate"
+
+     dynamodb_table = "terraform-lock"
+  }
+
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
+      version = ">= 4.0"
     }
   }
 }
 
 provider "aws" {
-  #   shared_config_files      = ["/Users/tf_user/.aws/conf"]
-  region                   = var.aws_region
+  region  = var.aws_region
   shared_credentials_files = ["~/.aws/credentials"]
-  profile                  = "devenv01"
+  profile                  = "aws-devenv"
 }
-
-# Configure the AWS Provider
-# provider "aws" {
-#   region = "us-east-1"
-# }

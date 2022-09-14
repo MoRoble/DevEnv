@@ -41,7 +41,6 @@ resource "aws_instance" "objs" {
     command = templatefile("${var.host_os}-ssh-config.tpl", {
       hostname = self.public_ip,
       user     = "ubuntu",
-      # identityfile = "/Users/Mohamed.Roble/Documents/Dev/DevEnv/devenv01.pem"
       identityfile = "~/.ssh/devenv"
     })
     interpreter = var.host_os == "linux" ? ["bash", "-c"] : ["Powershell", "-Command"]
