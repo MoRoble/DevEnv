@@ -38,7 +38,7 @@ resource "aws_instance" "objs" {
 
 
   provisioner "local-exec" {
-    command = templatefile("${var.host_os}-ssh-config.tpl", {
+    command = templatefile("./compute/${var.host_os}-ssh-config.tpl", {
       hostname = self.public_ip,
       user     = "ubuntu",
       # identityfile = "/Users/Mohamed.Roble/Documents/Dev/DevEnv/devenv01.pem"
