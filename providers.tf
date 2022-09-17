@@ -3,7 +3,7 @@ terraform {
 
   backend "s3" {
     bucket         = "devenv-general"
-    key            = "devenv/core.tfstate"
+    key            = "devenv/project.tfstate"
 
      dynamodb_table = "terraform-lock"
   }
