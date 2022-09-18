@@ -38,7 +38,7 @@ variable "access_ip" {
 variable "security_groups" {}
 
 
-# variable "db_subnet_group" {
-#   type = bool
-# }
+variable "db_subnet_group" {
+  type = bool
+}
 

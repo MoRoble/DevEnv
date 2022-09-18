@@ -13,3 +13,4 @@ variable "host_os" {
   type    = string
   default = "linux"
 }
+variable "db_subnet_group" {}
