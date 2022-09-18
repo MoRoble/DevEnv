@@ -17,7 +17,7 @@ variable "app_account" {
   type    = number
   default = 3
 }
- variable "bucketnames" {}
- 
+variable "bucketnames" {}
+
 
 

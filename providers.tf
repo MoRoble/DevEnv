@@ -2,10 +2,10 @@ terraform {
   required_version = "~>1.1.0"
 
   backend "s3" {
-    bucket         = "devenv-general"
-    key            = "devenv/project.tfstate"
+    bucket = "devenv-general"
+    key    = "devenv/project.tfstate"
 
-     dynamodb_table = "terraform-lock"
+    dynamodb_table = "terraform-lock"
   }
 
   required_providers {
@@ -17,7 +17,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.aws_region
+  region                   = var.aws_region
   shared_credentials_files = ["~/.aws/credentials"]
   profile                  = "devenv01"
 }
