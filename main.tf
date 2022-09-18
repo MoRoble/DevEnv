@@ -28,17 +28,17 @@ module "compute" {
   vol_size        = "20"
   public_key_path = "/Users/hamdi.hassan/terraform-practice/DevEnv/devenv.pub"
 
-  key_name        = "devenv"
+  key_name = "devenv"
   # instance_profile = "dev_profile"
 
 
 }
 
 module "iam" {
-  source = "./iam"
+  source      = "./iam"
   usernamedev = var.usernames-dev
-  userspare = var.users-spare
-  userdevops = var.users-devops
+  userspare   = var.users-spare
+  userdevops  = var.users-devops
 }
 
 
@@ -58,9 +58,9 @@ module "database" {
 
 
 module "lb" {
-  source                  = "./lb"
+  source = "./lb"
   # lb_count = 1
-  lb_security_group               = module.networking.security_group_wordpress
+  lb_security_group       = module.networking.security_group_wordpress
   public_subnets          = module.networking.public_subnets
   tg_port                 = 8000
   tg_protocol             = "HTTP"

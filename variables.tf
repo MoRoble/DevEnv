@@ -6,7 +6,7 @@ variable "host_os" {
 }
 
 variable "aws_region" {
-  type = string
+  type    = string
   default = "us-west-1"
 }
 
@@ -18,30 +18,30 @@ variable "app_account" {
   type    = number
   default = 3
 }
- variable "bucketnames" {}
- 
+variable "bucketnames" {}
+
 variable "usernames-dev" {
-  type = list
+  type = list(any)
   default = [
     "Mo.Roble",
     "Hamdi.Hassan"
   ]
 
-  
+
 }
 
 variable "users-devops" {
-  type = list
+  type = list(any)
   default = [
     "Mo-Roble",
     "Hamdi-Hassan"
   ]
 
-  
+
 }
 
 variable "users-spare" {
-  type = list
+  type = list(any)
   default = [
     "Roble",
     "Hassan"

@@ -1,11 +1,11 @@
 variable "usernamedev" {
-  type = list 
+  type = list(any)
 }
 
 variable "userdevops" {
-  type = list
+  type = list(any)
 }
 
 variable "userspare" {
-  type = list
+  type = list(any)
 }
