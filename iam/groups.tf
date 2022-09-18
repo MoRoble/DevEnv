@@ -35,6 +35,6 @@ resource "aws_iam_group" "spare-access" {
 resource "aws_iam_group_membership" "spare-access" {
     name = "add-user-to-userspare-access"
     users = var.userspare
-    group = aws_iam_group.spare-accessname
+    group = aws_iam_group.spare-access.name
   
 }

@@ -3,7 +3,7 @@
 resource "aws_iam_policy" "adminaccess" {
     name = "adminaccess"
     description = "This policy allow admininstrator access to users"
-    policy = file("administratoraccesspolicy.json")
+    policy = file("./iam/administratoraccesspolicy.json")
   
 }
             
@@ -11,6 +11,6 @@ resource "aws_iam_policy" "adminaccess" {
 resource "aws_iam_policy" "readonly" {
     name = "readonly"
     description = "This policy allow readonly access to users"
-    policy = file("readonlyaccess.json")
+    policy = file("./iam/readonlyaccess.json")
   
 }

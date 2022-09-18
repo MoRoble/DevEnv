@@ -36,7 +36,9 @@ module "compute" {
 
 module "iam" {
   source = "./iam"
-  
+  usernamedev = var.usernames-dev
+  userspare = var.users-spare
+  userdevops = var.users-devops
 }
 
 
