@@ -113,7 +113,7 @@ resource "aws_subnet" "dev_pub_sn" {
 resource "aws_subnet" "dev_app_sn" {
   count             = var.app_sn_count
   vpc_id            = aws_vpc.dev_vpc.id
-  cidr_block        = var.pub_cidrs[count.index]
+  cidr_block        = var.app_cidrs[count.index]
   availability_zone = random_shuffle.az_list.result[count.index]
 
   tags = {
@@ -124,7 +124,7 @@ resource "aws_subnet" "dev_app_sn" {
 resource "aws_subnet" "dev_db_sn" {
   count             = var.db_sn_count
   vpc_id            = aws_vpc.dev_vpc.id
-  cidr_block        = var.pub_cidrs[count.index]
+  cidr_block        = var.db_cidrs[count.index]
   availability_zone = random_shuffle.az_list.result[count.index]
 
   tags = {
