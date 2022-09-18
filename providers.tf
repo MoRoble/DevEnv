@@ -13,12 +13,12 @@ terraform {
     key    = "devenv/project.tfstate"
 
     dynamodb_table = "terraform-lock"
+    region                   = "us-west-1"
   }
 
 }
 
 provider "aws" {
-  region                   = var.aws_region
   shared_credentials_files = ["~/.aws/credentials"]
   profile                  = "aws-devenv"
 }

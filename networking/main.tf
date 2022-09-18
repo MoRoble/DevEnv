@@ -132,14 +132,14 @@ resource "aws_subnet" "dev_db_sn" {
   }
 }
 
-# resource "aws_db_subnet_group" "rds_sng" {
-#   count      = var.db_subnet_group == true ? 1 : 0
-#   name       = "rds_subnetgroup"
-#   subnet_ids = aws_subnet.dev_db_sn.*.id
-#   tags = {
-#     name = "db-sng"
-#   }
-# }
+resource "aws_db_subnet_group" "rds_sng" {
+  count      = var.db_subnet_group == true ? 1 : 0
+  name       = "rds_subnetgroup"
+  subnet_ids = aws_subnet.dev_db_sn.*.id
+  tags = {
+    name = "db-sng"
+  }
+}
 
 ## Policy document
 data "aws_iam_policy_document" "dev_policy_doc" {
