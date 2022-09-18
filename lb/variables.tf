@@ -1,4 +1,4 @@
-variable "public_sg" {}
+variable "dev_sg" {}
 variable "public_subnets" {}
 variable "tg_port" {}
 variable "tg_protocol" {}
