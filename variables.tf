@@ -19,5 +19,3 @@ variable "app_account" {
 }
  variable "bucketnames" {}
  
-
-
