@@ -1,9 +1,10 @@
 # --- loadbalancing/main.tf ---
 
 resource "aws_lb" "dev_lb" {
-  name            = "dev-loadbalancer"
-  subnets         = var.dev_pub_sn
-  security_groups = [var.objs]
+  # count = var.lb_count
+  name = "dev-loadbalancer"
+  subnets         = var.public_subnets
+  security_groups = [var.lb_security_group]
   idle_timeout    = 400
 }
 
@@ -30,6 +31,6 @@ resource "aws_lb_listener" "dev_lb_listener" {
   protocol          = var.listener_protocol
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.mtc_tg.arn
+    target_group_arn = aws_lb_target_group.dev_tg.arn
   }
 }

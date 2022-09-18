@@ -11,6 +11,11 @@ output "security_group" {
   value = [aws_security_group.objs["dev_sg"].id]
 }
 
+
+output "security_group_wordpress" {
+  value = [aws_security_group.objs["wordpress"].id]
+}
+
 output "dev_role" {
   value = aws_iam_role.dev_wp_role.id
 }

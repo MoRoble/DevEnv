@@ -1,4 +1,4 @@
-variable "dev_sg" {}
+variable "lb_security_group" {}
 variable "public_subnets" {}
 variable "tg_port" {}
 variable "tg_protocol" {}
@@ -9,3 +9,4 @@ variable "elb_timeout" {}
 variable "elb_interval" {}
 variable "listener_port" {}
 variable "listener_protocol" {}
+# variable "lb_count" {}

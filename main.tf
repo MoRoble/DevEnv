@@ -19,40 +19,41 @@ module "networking" {
 
 
 
-# module "compute" {
-#   source          = "./compute"
-#   security_group  = module.networking.security_group
-#   pub_sn          = module.networking.public_subnets
-#   instance_count  = 1
-#   instance_type   = "t3.micro"
-#   vol_size        = "20"
-#   public_key_path = "/Users/Mohamed.Roble/Documents/Dev/DevEnv/devenv.pub"
-#   # public_key_path = "/Users/hamdi.hassan/terraform-practice/DevEnv/devenv.pub"
-#   key_name = "devenv"
-#   # instance_profile = "dev_profile"
+module "compute" {
+  source          = "./compute"
+  security_group  = module.networking.security_group
+  pub_sn          = module.networking.public_subnets
+  instance_count  = 1
+  instance_type   = "t3.micro"
+  vol_size        = "20"
+  public_key_path = "/Users/Mohamed.Roble/Documents/Dev/DevEnv/devenv.pub"
+  # public_key_path = "/Users/hamdi.hassan/terraform-practice/DevEnv/devenv.pub"
+  key_name = "devenv"
+  # instance_profile = "dev_profile"
 
 
-# }
+}
 
 
-# module "database" {
-#   source                 = "./database"
-#   db_engine_version      = "8.0.25"
-#   db_instance_class      = "db.t2.micro"
-#   dbname                 = var.dbname
-#   dbuser                 = var.dbuser
-#   dbpassword             = var.dbpassword
-#   db_identifier          = "dev-db"
-#   skip_db_snapshot       = true
-#   db_subnet_group_name   = module.networking.db_subnet_group_name[0]
-#   vpc_security_group_ids = module.networking.db_security_group
-# }
+module "database" {
+  source                 = "./database"
+  db_engine_version      = "8.0.25"
+  db_instance_class      = "db.t2.micro"
+  dbname                 = var.dbname
+  dbuser                 = var.dbuser
+  dbpassword             = var.dbpassword
+  db_identifier          = "dev-db"
+  skip_db_snapshot       = true
+  db_subnet_group_name   = module.networking.db_subnet_group_name[0]
+  vpc_security_group_ids = module.networking.db_security_group
+}
 
 
 
 module "lb" {
   source                  = "./lb"
-  public_sg               = module.networking.security_group
+  # lb_count = 1
+  lb_security_group               = module.networking.security_group_wordpress
   public_subnets          = module.networking.public_subnets
   tg_port                 = 8000
   tg_protocol             = "HTTP"
