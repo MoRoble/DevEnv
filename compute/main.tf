@@ -40,7 +40,7 @@ resource "aws_instance" "objs" {
     volume_size = var.vol_size
   }
   tags = {
-    Name = "Ubuntu-server"
+    Name = local.tmp.dev_generic_name["dev"]
   
   }
 
