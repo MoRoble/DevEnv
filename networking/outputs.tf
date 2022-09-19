@@ -18,6 +18,11 @@ output "dev_role" {
 output "public_subnets" {
   value = aws_subnet.dev_pub_sn.*.id
 }
+
+output "lb_public_subnets" {
+  value = aws_subnet.dev_pub_sn[0].id
+}
+
 # output "iam_role"{
 #   value = aws_iam_role.dev_wp_role.id
 # }
