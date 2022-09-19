@@ -8,3 +8,8 @@ bucketnames = "dev-bucket1"
 dbname     = "barxada"
 dbuser     = "loki"
 dbpassword = "h0d4nF!l35"
+devtags = {
+    environment = "Development"
+    BusinessUnit = "Tech" #to be confirmed
+    Department = "DevOps"
+}
