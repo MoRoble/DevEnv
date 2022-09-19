@@ -21,12 +21,12 @@ module "networking" {
 
 module "compute" {
   source          = "./compute"
-  security_group  = module.networking.security_group
+  security_group  = module.networking.dev_security_group
   pub_sn          = module.networking.public_subnets
   instance_count  = 1
   instance_type   = "t3.micro"
   vol_size        = "20"
-  public_key_path = "/Users/Mohamed.Roble/Documents/Dev/DevEnv/devenv.pub"
+  public_key_path = "/Users/hamdi.hassan/terraform-practice/DevEnv/devenv.pub"
 
   key_name = "devenv"
   # instance_profile = "dev_profile"
@@ -61,7 +61,7 @@ module "lb" {
   source = "./lb"
   # lb_count = 1
   lb_security_group       = module.networking.security_group_wordpress
-  public_subnets          = module.networking.public_subnets
+  lb_public_subnets          = module.networking.public_subnets
   tg_port                 = 8000
   tg_protocol             = "HTTP"
   vpc_id                  = module.networking.vpc_id

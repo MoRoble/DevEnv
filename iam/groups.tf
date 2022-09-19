@@ -22,7 +22,7 @@ resource "aws_iam_group" "dev-administrator" {
 resource "aws_iam_group_membership" "dev-administrator" {
   name  = "add-user-to-dev-administrator"
   users = var.usernamedev
-  group = aws_iam_group.dev-administrator.name # can it be .self
+  group = aws_iam_group.dev-administrator.name
 
 }
 
