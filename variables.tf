@@ -2,12 +2,11 @@
 
 variable "host_os" {
   type    = string
-  default = "linux"
 }
 
 variable "aws_region" {
   type    = string
-  default = "us-west-1"
+  default = "us-west-2"
 }
 
 variable "access_ip" {
@@ -59,4 +58,8 @@ variable "dbuser" {
 variable "dbpassword" {
   type      = string
   sensitive = true
+}
+ variable "devtags" {
+  type = map
+  
 }

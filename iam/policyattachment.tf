@@ -12,7 +12,7 @@ resource "aws_iam_group_policy_attachment" "attach-policy1" {
 }
 
 resource "aws_iam_group_policy_attachment" "attach-policy2" {
-    group = aws_iam_group.devops-administrator.name
-    policy_arn = aws_iam_policy.adminaccess.arn
-  
+  group      = aws_iam_group.devops-administrator.name
+  policy_arn = aws_iam_policy.adminaccess.arn
+
 }

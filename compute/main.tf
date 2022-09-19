@@ -7,19 +7,29 @@ resource "random_id" "dev_node_id" {
     key_name = var.key_name
   }
 }
-
+## SSM parameters for the  key pair 
+resource "aws_ssm_parameter" "key_path" {
+  name        = "/dev/global/instance/key-pair"
+  description = "The ssh key pair"
+  type        = "SecureString"
+  value       = local.tmp.ssmp_placeholder_default_value
+  tags = var.devtags
+  lifecycle {
+    ignore_changes = [value]
+  }
+}
 ## key pair
-resource "aws_key_pair" "sweden_key" {
+resource "aws_key_pair" "kep_pair" {
   key_name   = var.key_name
-  public_key = file(var.public_key_path)
+  public_key = aws_ssm_parameter.key_path.value
 
 }
 
 resource "aws_instance" "objs" {
   count                  = var.instance_count
-  instance_type          = var.instance_type #refer to root/main.tf
+  instance_type          = var.instance_type 
   ami                    = data.aws_ami.ubuntu_server.id
-  key_name               = aws_key_pair.sweden_key.id
+  key_name               = aws_key_pair.kep_pair.id
   vpc_security_group_ids = var.security_group
   subnet_id              = var.pub_sn[count.index]
   # iam_instance_profile   = aws_iam_instance_profile.dev_ec2_profile.name
@@ -27,12 +37,11 @@ resource "aws_instance" "objs" {
   # user_data              = ""
 
   root_block_device {
-    # volume_size = 23
     volume_size = var.vol_size
   }
   tags = {
-    Name = "Ubuntu-server"
-    # Name = "dev_node-${random_id.mtc_node_id[count.index].dec}"
+    Name = local.tmp.dev_generic_name["dev"]
+  
   }
 
 

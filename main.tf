@@ -26,9 +26,9 @@ module "compute" {
   instance_count  = 1
   instance_type   = "t3.micro"
   vol_size        = "20"
-  public_key_path = "/Users/hamdi.hassan/terraform-practice/DevEnv/devenv.pub"
-
   key_name = "devenv"
+  host_os = var.host_os
+  devtags = var.devtags
   # instance_profile = "dev_profile"
 
 
@@ -39,6 +39,7 @@ module "iam" {
   usernamedev = var.usernames-dev
   userspare   = var.users-spare
   userdevops  = var.users-devops
+  devtags =  var.devtags 
 }
 
 
@@ -61,7 +62,11 @@ module "lb" {
   source = "./lb"
   # lb_count = 1
   lb_security_group       = module.networking.security_group_wordpress
-  lb_public_subnets          = module.networking.public_subnets
+<<<<<<< HEAD
+  lb_public_subnets          = module.networking.lb_public_subnets
+=======
+  lb_public_subnets       = module.networking.public_subnets
+>>>>>>> origin/aws-hamdi
   tg_port                 = 8000
   tg_protocol             = "HTTP"
   vpc_id                  = module.networking.vpc_id
