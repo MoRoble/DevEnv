@@ -21,17 +21,29 @@ module "networking" {
 
 module "compute" {
   source          = "./compute"
-  security_group  = module.networking.security_group
+  security_group  = module.networking.dev_security_group
   pub_sn          = module.networking.public_subnets
   instance_count  = 1
   instance_type   = "t3.micro"
   vol_size        = "20"
+<<<<<<< HEAD
+=======
+  public_key_path = "/Users/hamdi.hassan/terraform-practice/DevEnv/devenv.pub"
+
+>>>>>>> origin/aws-hamdi
   key_name = "devenv"
   host_os = var.host_os
   devtags = var.devtags
   # instance_profile = "dev_profile"
 
 
+}
+
+module "iam" {
+  source      = "./iam"
+  usernamedev = var.usernames-dev
+  userspare   = var.users-spare
+  userdevops  = var.users-devops
 }
 
 
@@ -51,10 +63,10 @@ module "database" {
 
 
 module "lb" {
-  source                  = "./lb"
+  source = "./lb"
   # lb_count = 1
-  lb_security_group               = module.networking.security_group_wordpress
-  public_subnets          = module.networking.public_subnets
+  lb_security_group       = module.networking.security_group_wordpress
+  lb_public_subnets          = module.networking.public_subnets
   tg_port                 = 8000
   tg_protocol             = "HTTP"
   vpc_id                  = module.networking.vpc_id

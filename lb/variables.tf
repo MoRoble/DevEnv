@@ -1,5 +1,5 @@
 variable "lb_security_group" {}
-variable "public_subnets" {}
+variable "lb_public_subnets" {}
 variable "tg_port" {}
 variable "tg_protocol" {}
 variable "vpc_id" {}

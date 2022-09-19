@@ -1,6 +1,6 @@
 terraform {
   required_version = "~>1.1.0"
-  
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -13,7 +13,7 @@ terraform {
     key    = "devenv/project.tfstate"
 
     dynamodb_table = "terraform-lock"
-    region                   = "us-west-1"
+    region         = "us-west-1"
   }
 
 }
