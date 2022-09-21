@@ -22,8 +22,10 @@ variable "bucketnames" {}
 variable "usernames-dev" {
   type = list(any)
   default = [
-    "Mo.Roble",
-    "Hamdi.Hassan"
+    "Hamdi.Hassan",
+    "Sadia",
+    
+    
   ]
 
 
@@ -33,7 +35,8 @@ variable "users-devops" {
   type = list(any)
   default = [
     "Mo-Roble",
-    "Hamdi-Hassan"
+    "Nuradin",
+    "Moalimu"
   ]
 
 
@@ -42,8 +45,7 @@ variable "users-devops" {
 variable "users-spare" {
   type = list(any)
   default = [
-    "Roble",
-    "Hassan"
+    "Nasir"
   ]
 
 }

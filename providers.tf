@@ -9,7 +9,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "devenv-general"
+    bucket = "devenv-te-general"
     key    = "devenv/project.tfstate"
 
     dynamodb_table = "terraform-lock"
@@ -21,5 +21,5 @@ provider "aws" {
   region                   = var.aws_region
   shared_credentials_files = ["~/.aws/credentials"]
   # profile                  = "aws-devenv"
-  profile = "devenv01"
+  profile = "aws-devenv"
 }

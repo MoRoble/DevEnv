@@ -29,7 +29,7 @@ output "public_subnets" {
 }
 
 output "lb_public_subnets" {
-  value = aws_subnet.dev_pub_sn[0].id
+  value = aws_subnet.dev_pub_sn.*.id
 }
 
 # output "iam_role"{

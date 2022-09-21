@@ -62,11 +62,7 @@ module "lb" {
   source = "./lb"
   # lb_count = 1
   lb_security_group       = module.networking.security_group_wordpress
-<<<<<<< HEAD
   lb_public_subnets          = module.networking.lb_public_subnets
-=======
-  lb_public_subnets       = module.networking.public_subnets
->>>>>>> origin/aws-hamdi
   tg_port                 = 8000
   tg_protocol             = "HTTP"
   vpc_id                  = module.networking.vpc_id

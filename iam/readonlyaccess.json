@@ -12,7 +12,7 @@
         "autoscaling:Describe*",
         "autoscaling-plans:Describe*",
         "autoscaling-plans:GetScalingPlanResourceForecastData",
-        "athena:List*",
+        "6:List*",
         "athena:Batch*",
         "athena:Get*",
         "backup:Describe*",

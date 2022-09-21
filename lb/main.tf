@@ -3,7 +3,7 @@
 resource "aws_lb" "dev_lb" {
   # count = var.lb_count
   name            = "dev-loadbalancer"
-  subnets         = [var.lb_public_subnets]
+  subnets         = var.lb_public_subnets
   security_groups = var.lb_security_group
   idle_timeout    = 400
 }
