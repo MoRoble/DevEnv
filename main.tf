@@ -1,15 +1,15 @@
-resource "aws_vpc" "dev_vpc" {
+resource "aws_vpc" "dev_ec2_vpc" {
   cidr_block           = "10.16.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
 
   tags = {
-    Name = "Dev-Main-VPC"
+    Name = "Dev-Main-ec2-VPC"
   }
 }
 
 resource "aws_subnet" "dev_public_sn" {
-  vpc_id                  = aws_vpc.dev_vpc.id
+  vpc_id                  = aws_vpc.dev_ec2_vpc.id
   cidr_block              = "10.16.32.0/20"
   map_public_ip_on_launch = true
   availability_zone       = "us-west-2a"
@@ -20,7 +20,7 @@ resource "aws_subnet" "dev_public_sn" {
 }
 
 resource "aws_subnet" "dev_public_sn1" {
-  vpc_id                  = aws_vpc.dev_vpc.id
+  vpc_id                  = aws_vpc.dev_ec2_vpc.id
   cidr_block              = "10.16.48.0/20"
   map_public_ip_on_launch = true
   availability_zone       = "us-west-2b"
@@ -31,7 +31,7 @@ resource "aws_subnet" "dev_public_sn1" {
 }
 
 resource "aws_internet_gateway" "dev_igw" {
-  vpc_id = aws_vpc.dev_vpc.id
+  vpc_id = aws_vpc.dev_ec2_vpc.id
 
   tags = {
     Name = "dev-igw"
@@ -39,7 +39,7 @@ resource "aws_internet_gateway" "dev_igw" {
 }
 
 resource "aws_route_table" "dev_pub_rt" {
-  vpc_id = aws_vpc.dev_vpc.id
+  vpc_id = aws_vpc.dev_ec2_vpc.id
 
   tags = {
     Name = "pub-rt"
@@ -61,7 +61,7 @@ resource "aws_route_table_association" "dev_pub_assoc" {
 resource "aws_security_group" "dev_sg" {
   name        = "dev-sg"
   description = "Developer Security group"
-  vpc_id      = aws_vpc.dev_vpc.id
+  vpc_id      = aws_vpc.dev_ec2_vpc.id
 
   ingress {
     from_port = 0
