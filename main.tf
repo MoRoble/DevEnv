@@ -83,8 +83,8 @@ resource "aws_key_pair" "sweden_key" {
   key_name = "devenv"
   # key_name = "devenv01"
   # public_key = file("~/.ssh/devenv.pub")
-  public_key = file("devenv.pub")
-  # public_key = file("/Users/Mohamed.Roble/Documents/Dev/DevEnv/devenv01.pem")
+  # public_key = file("devenv.pub")
+  public_key = file("/Users/Mohamed.Roble/Documents/Dev/keys/devenv.pub")
 
 }
 
