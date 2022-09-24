@@ -118,3 +118,17 @@ resource "aws_instance" "dev_ec2" {
     # interpreter = ["Powershell", "-Command"] # for windows workstation
   }
 }
+
+resource "aws_efs_file_system" "dev_efs" {
+  creation_token = "dev-files"
+
+  lifecycle_policy {
+    transition_to_ia = "AFTER_30_DAYS"
+  }
+
+  # number_of_mount_targets = 2
+
+  tags = {
+    Name = "Dev-files1"
+  }
+}
