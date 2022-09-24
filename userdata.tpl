@@ -22,6 +22,7 @@ test
 sudo apt-get update -y
 git clone https://github.com/MoRoble/DevEnv.git
 cd DevEnv
+git remote set-url origin https://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@github.com/MoRoble/DevEnv.git
 git checkout ec2-only
 
 #install docker
