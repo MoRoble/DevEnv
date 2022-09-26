@@ -13,7 +13,7 @@ resource "aws_ssm_parameter" "key_path" {
   description = "The ssh key pair"
   type        = "SecureString"
   value       = local.tmp.ssmp_placeholder_default_value
-  tags = var.devtags
+  tags = var.common-tags
   lifecycle {
     ignore_changes = [value]
   }

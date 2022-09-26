@@ -9,7 +9,7 @@ variable "userdevops" {
 variable "userspare" {
   type = list(any)
 }
-variable "devtags" {
+variable "common-tags" {
   type = map
   
 }

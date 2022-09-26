@@ -28,7 +28,7 @@ module "compute" {
   vol_size        = "20"
   key_name = "devenv"
   host_os = var.host_os
-  devtags = var.devtags
+  common-tags = var.common-tags
   # instance_profile = "dev_profile"
 
 
@@ -39,7 +39,7 @@ module "iam" {
   usernamedev = var.usernames-dev
   userspare   = var.users-spare
   userdevops  = var.users-devops
-  devtags =  var.devtags 
+  common-tags =  var.common-tags 
 }
 
 

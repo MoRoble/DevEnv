@@ -9,7 +9,7 @@ variable "key_name" {}
 # variable "instance_profile" {}
 # variable "iam_role" {}
 variable "host_os" {}
-variable "devtags" {
+variable "common-tags" {
   type = map
   
 }

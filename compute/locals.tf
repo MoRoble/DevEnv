@@ -1,5 +1,5 @@
 locals {
-    env_name = var.devtags["environment"]
+    env_name = var.common-tags["environment"]
   tmp = { #? Trying out somethign I saw somewhere!! Don't ask me at this stage
     dev_generic_name = {
       dev = replace(

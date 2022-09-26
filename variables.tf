@@ -61,7 +61,7 @@ variable "dbpassword" {
   type      = string
   sensitive = true
 }
- variable "devtags" {
+ variable "common-tags" {
   type = map
   
 }
