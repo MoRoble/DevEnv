@@ -21,7 +21,8 @@ resource "aws_ssm_parameter" "key_path" {
 ## key pair
 resource "aws_key_pair" "kep_pair" {
   key_name   = var.key_name
-  public_key = aws_ssm_parameter.key_path.value
+  # public_key = aws_ssm_parameter.key_path.value
+  public_key = file("/Users/Mohamed.Roble/Documents/Dev/keys/devenv.pub")
 
 }
 

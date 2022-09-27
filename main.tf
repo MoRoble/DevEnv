@@ -19,21 +19,21 @@ module "networking" {
 
 
 
-module "compute" {
-  source         = "./compute"
-  security_group = module.networking.dev_security_group
-  pub_sn         = module.networking.public_subnets
-  instance_count = 2
-  instance_type  = "t3.micro"
-  vol_size       = "20"
-  key_name       = "key_name"
-  # key_name       = "devenv"
-  host_os = var.host_os
-  devtags = var.devtags
-  # instance_profile = "dev_profile"
+# module "compute" {
+#   source         = "./compute"
+#   security_group = module.networking.dev_security_group
+#   pub_sn         = module.networking.public_subnets
+#   instance_count = 2
+#   instance_type  = "t3.micro"
+#   vol_size       = "20"
+#   key_name       = "key_name"
+#   # key_name       = "devenv"
+#   host_os = var.host_os
+#   devtags = var.devtags
+#   # instance_profile = "dev_profile"
 
 
-}
+# }
 
 module "iam" {
   source      = "./iam"
