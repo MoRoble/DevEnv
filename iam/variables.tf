@@ -10,6 +10,6 @@ variable "userspare" {
   type = list(any)
 }
 variable "devtags" {
-  type = map
-  
+  type = map(any)
+
 }

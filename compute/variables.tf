@@ -10,6 +10,6 @@ variable "key_name" {}
 # variable "iam_role" {}
 variable "host_os" {}
 variable "devtags" {
-  type = map
-  
+  type = map(any)
+
 }

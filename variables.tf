@@ -1,7 +1,7 @@
 ##-----root/variables.tf
 
 variable "host_os" {
-  type    = string
+  type = string
 }
 
 variable "aws_region" {
@@ -59,7 +59,7 @@ variable "dbpassword" {
   type      = string
   sensitive = true
 }
- variable "devtags" {
-  type = map
-  
+variable "devtags" {
+  type = map(any)
+
 }

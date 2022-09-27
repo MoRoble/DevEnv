@@ -13,7 +13,7 @@ resource "aws_ssm_parameter" "key_path" {
   description = "The ssh key pair"
   type        = "SecureString"
   value       = local.tmp.ssmp_placeholder_default_value
-  tags = var.devtags
+  tags        = var.devtags
   lifecycle {
     ignore_changes = [value]
   }
@@ -27,7 +27,7 @@ resource "aws_key_pair" "kep_pair" {
 
 resource "aws_instance" "objs" {
   count                  = var.instance_count
-  instance_type          = var.instance_type 
+  instance_type          = var.instance_type
   ami                    = data.aws_ami.ubuntu_server.id
   key_name               = aws_key_pair.kep_pair.id
   vpc_security_group_ids = var.security_group
@@ -41,7 +41,7 @@ resource "aws_instance" "objs" {
   }
   tags = {
     Name = local.tmp.dev_generic_name["dev"]
-  
+
   }
 
 
