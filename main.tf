@@ -13,7 +13,7 @@ resource "aws_subnet" "arday_public_sn" {
   vpc_id                  = aws_vpc.arday_vpc.id
   cidr_block              = "10.16.32.0/20"
   map_public_ip_on_launch = true
-  availability_zone       = "us-west-2a"
+  availability_zone       = "eu-north-1a"
 
   tags = {
     Name = "pub-sn"
@@ -24,7 +24,7 @@ resource "aws_subnet" "arday_public_sn1" {
   vpc_id                  = aws_vpc.arday_vpc.id
   cidr_block              = "10.16.48.0/20"
   map_public_ip_on_launch = true
-  availability_zone       = "us-west-2b"
+  availability_zone       = "eu-north-1b"
 
   tags = {
     Name = "pub-sn1"
@@ -103,7 +103,7 @@ resource "aws_instance" "arday_ec2" {
   instance_type = "t3.micro"
   ami           = data.aws_ami.windows_server.id
   #   key_name               = aws_key_pair.sweden_key.id
-  key_name = "devenv01"
+  key_name = "arday"
   # key_name               = "oregon"
   vpc_security_group_ids = [aws_security_group.arday_sg.id]
   subnet_id              = aws_subnet.arday_public_sn.id
@@ -135,10 +135,10 @@ resource "aws_instance" "arday_ec2" {
 # }
 
 resource "aws_instance" "arday1_ec2" {
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   ami           = data.aws_ami.windows_server.id
   #   key_name               = aws_key_pair.sweden_key.id
-  key_name = "devenv01"
+  key_name = "arday"
   # key_name               = "oregon"
   vpc_security_group_ids = [aws_security_group.arday_sg.id]
   subnet_id              = aws_subnet.arday_public_sn1.id

@@ -30,5 +30,5 @@ output "server1_public_dns" {
 # }
 
 output "password_decrypted" {
-  value = rsadecrypt(aws_instance.arday_ec2.password_data, file("~/Documents/Dev/keys/devenv01.pem"))
+  value = rsadecrypt(aws_instance.arday_ec2.password_data, file("~/Documents/Dev/keys/arday.pem"))
 }
