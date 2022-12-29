@@ -100,7 +100,7 @@ data "aws_ami" "windows_server" {
 
 
 resource "aws_instance" "arday_ec2" {
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   ami           = data.aws_ami.windows_server.id
   #   key_name               = aws_key_pair.sweden_key.id
   key_name = "devenv01"
@@ -111,9 +111,8 @@ resource "aws_instance" "arday_ec2" {
 
   user_data = file("userdata.tpl")
 
-
   root_block_device {
-    volume_size = 30
+    volume_size = 40
   }
 
   tags = {
